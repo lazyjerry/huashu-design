@@ -24,7 +24,7 @@ Not "decent for AI" quality — it looks like a real design team made it. Give t
 **Every animation in this README was made by huashu-design itself.** No Figma, no After Effects — just a sentence + skill run. Next product launch needs a promo video? You can make it too.
 
 ```
-npx skills add alchaincyf/huashu-design
+npx skills add lazyjerry/huashu-design
 ```
 
 [See it work](#demo-gallery) · [Install](#install) · [What it does](#what-it-does) · [How it works](#core-mechanics) · [vs. Claude Design](#vs-claude-design)
@@ -48,8 +48,28 @@ npx skills add alchaincyf/huashu-design
 ## Install
 
 ```bash
-npx skills add alchaincyf/huashu-design
+npx skills add lazyjerry/huashu-design
 ```
+
+If you manage global skills with [AI Global](https://github.com/lazyjerry/ai-global), you can install it this way instead:
+
+```bash
+# Install AI Global first (pick one)
+curl -fsSL https://raw.githubusercontent.com/lazyjerry/ai-global/main/install.sh | bash
+# or
+npm install -g ai-global
+
+# First run: create ~/.ai-global/ and relink supported tools
+ai-global
+
+# Install huashu-design
+ai-global add-skill lazyjerry/huashu-design
+
+# Verify it was added
+ai-global list-skills
+```
+
+If AI Global is already installed, you can just run `ai-global add-skill lazyjerry/huashu-design`.
 
 Then just talk to Claude Code:
 
@@ -67,8 +87,8 @@ No buttons, no panels, no Figma plugin. Agent-agnostic — drops into Claude Cod
 ## Star History
 
 <p align="center">
-  <a href="https://star-history.com/#alchaincyf/huashu-design&Date">
-    <img src="https://api.star-history.com/svg?repos=alchaincyf/huashu-design&type=Date" alt="huashu-design Star History" width="80%">
+  <a href="https://star-history.com/#lazyjerry/huashu-design&Date">
+    <img src="https://api.star-history.com/svg?repos=lazyjerry/huashu-design&type=Date" alt="huashu-design Star History" width="80%">
   </a>
 </p>
 
@@ -274,7 +294,7 @@ huashu-design/
 
 The day Anthropic launched Claude Design I played with it until 4 a.m. A few days later I realized I hadn't opened it once since — not because it's bad (it's the most polished product in the category) but because I'd rather have an agent work in my terminal than open any graphical UI.
 
-So I had an agent deconstruct Claude Design itself (including the system prompts circulating in the community, the brand asset protocol, the component mechanics), distill it into a structured spec, then write it as a skill installed in my own Claude Code.
+So I had an agent deconstruct Claude Design itself (including the system prompts circulating in the community, the core asset protocol, the component mechanics), distill it into a structured spec, then write it as a skill installed in my own Claude Code.
 
 Thanks to Anthropic for writing the Claude Design prompts so clearly. This kind of derivative work inspired by other products is the new form of open-source culture in the AI era.
 
