@@ -2,7 +2,7 @@
 
 > 從 huashu-design hero 動畫 v9（25 秒，8 場景）中提煉出的**一種可複用的視覺編排結構**。
 > 不是動畫製作流水線，是**什麼場景下這種編排是「對的」**。
-> 實戰參考：[demos/hero-animation-v9.mp4](../demos/hero-animation-v9.mp4) · [https://www.huasheng.ai/huashu-design-hero/](https://www.huasheng.ai/huashu-design-hero/)
+> 本地 demo：[demos/hero-animation-v10.html](../demos/hero-animation-v10.html) · [https://www.huasheng.ai/huashu-design-hero/](https://www.huasheng.ai/huashu-design-hero/)
 
 ## 一句話先行
 

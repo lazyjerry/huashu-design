@@ -1,7 +1,7 @@
 ---
 name: huashu-design
 description: 花叔Design（Huashu-Design）——用 HTML 做高保真原型、互動 Demo、簡報、動畫、設計變體探索與設計方向顧問。HTML 是工具不是媒介，必須依任務 embody 對應專家。觸發詞：做原型、設計 Demo、互動原型、HTML 演示、動畫 Demo、設計變體、hi-fi 設計、UI mockup、prototype、設計探索、做個 HTML 頁面、做個視覺化、app 原型、iOS 原型、行動應用 mockup、匯出 MP4、匯出 GIF、60fps 影片、設計風格、設計方向、設計哲學、配色方案、視覺風格、推薦風格、選個風格、做個好看的、評審、好不好看、review this design。
-version: v0.9.0
+version: v0.9.1
 ---
 
 # 花叔Design · Huashu-Design

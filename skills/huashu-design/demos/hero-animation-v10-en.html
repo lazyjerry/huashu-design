@@ -967,7 +967,31 @@
     'preview-25-consciousness-prob.png','preview-26-divider-4.png','preview-27-cot-faithfulness.png','preview-28-alignment-faking.png',
     'preview-29-divider-5.png','preview-30-open-questions.png','preview-31-giving-back.png','preview-32-closing.png',
   ];
-  const BASE = '../../../2026.04-AI心理学/演讲PPT-北大/';
+  const posterTitle = (fileName) => fileName
+    .replace(/^preview-\d+-/, '')
+    .replace(/\.png$/, '')
+    .replace(/-/g, ' ')
+    .replace(/\b\w/g, (char) => char.toUpperCase());
+  const posterDataUri = (fileName, index) => {
+    const number = String(index + 1).padStart(2, '0');
+    const title = posterTitle(fileName);
+    const svg = `
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720">
+        <defs>
+          <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#161616"/>
+            <stop offset="100%" stop-color="#050505"/>
+          </linearGradient>
+        </defs>
+        <rect width="1280" height="720" fill="url(#bg)"/>
+        <rect x="34" y="34" width="1212" height="652" rx="34" fill="none" stroke="rgba(255,255,255,0.14)"/>
+        <text x="86" y="124" fill="#D97757" font-family="Inter, Arial, sans-serif" font-size="30" letter-spacing="10">HUASHU DESIGN</text>
+        <text x="86" y="350" fill="#F5F4F0" font-family="Inter, Arial, sans-serif" font-size="118" font-weight="700">${number}</text>
+        <text x="86" y="430" fill="#F5F4F0" font-family="Inter, Arial, sans-serif" font-size="56" font-weight="500">${title}</text>
+        <text x="86" y="496" fill="rgba(245,244,240,0.68)" font-family="Inter, Arial, sans-serif" font-size="30">Parallel architecture study</text>
+      </svg>`;
+    return `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(svg)}`;
+  };
 
   // ---------- Build gallery ----------
   const COLS = 8, ROWS = 6, COUNT = COLS * ROWS;
@@ -981,15 +1005,14 @@
     if (zIdx > 12) card.classList.add('depth-near');
     else if (zIdx < -12) card.classList.add('depth-far');
     const img = document.createElement('img');
-    img.src = BASE + SLIDE_FILES[slideIdx];
-    img.onerror = () => { img.src = BASE + 'preview-01-cover.png'; };
+    img.src = posterDataUri(SLIDE_FILES[slideIdx], slideIdx);
     card.appendChild(img);
     galleryCanvas.appendChild(card);
     galleryCards.push(card);
   }
   for (let i = 0; i < 32; i++) {
     const im = new Image();
-    im.src = BASE + SLIDE_FILES[i];
+    im.src = posterDataUri(SLIDE_FILES[i], i);
   }
 
   // ---------- Easings ----------
