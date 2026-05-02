@@ -16,12 +16,24 @@
 
 **不要**省略 `integrity`——CDN 一旦被劫持或竄改，這是防線。
 
+## 技術紅線速查
+
+React + Babel 專案最低限度守這些：
+
+1. 不要寫通用的 `const styles = {...}`，每個檔案都要唯一命名，例如 `terminalStyles`
+2. 多個 `<script type="text/babel">` 作用域不共享，跨檔案元件與工具都要 `Object.assign(window, {...})`
+3. 不要用 `scrollIntoView`，改用容器內捲動控制
+4. 固定尺寸內容自己做 auto-scale + letterboxing
+5. 簡報先決定是多檔 `deck_index.html` 還是單檔 `deck_stage.js`
+
+Starter Components、匯出工具、簡報架構表請讀 `references/technical-specs.md`。
+
 ## 檔案結構
 
 ```
 專案名/
 ├── index.html               # 主 HTML
-├── components.jsx           # 組件檔案（type="text/babel" 載入）
+├── components.jsx           # 元件檔案（type="text/babel" 載入）
 ├── data.js                  # 資料檔案
 └── styles.css               # 額外 CSS（選填）
 ```
@@ -34,7 +46,7 @@ HTML 裡載入方式：
 <script src="https://unpkg.com/react-dom@18.3.1/..."></script>
 <script src="https://unpkg.com/@babel/standalone@7.29.0/..."></script>
 
-<!-- 然後你的組件檔案 -->
+<!-- 然後你的元件檔案 -->
 <script type="text/babel" src="components.jsx"></script>
 <script type="text/babel" src="pages.jsx"></script>
 
@@ -51,7 +63,7 @@ HTML 裡載入方式：
 
 ### 規矩 1：styles 物件必須使用唯一命名
 
-**錯誤**（多組件時必炸）：
+**錯誤**（多元件時必炸）：
 ```jsx
 // components.jsx
 const styles = { button: {...}, card: {...} };
@@ -60,7 +72,7 @@ const styles = { button: {...}, card: {...} };
 const styles = { container: {...}, header: {...} };
 ```
 
-**正確**：每個組件檔案的 styles 使用唯一前綴。
+**正確**：每個元件檔案的 styles 使用唯一前綴。
 
 ```jsx
 // terminal.jsx
@@ -76,18 +88,18 @@ const sidebarStyles = {
 };
 ```
 
-**或者使用 inline styles（行內樣式）**（小組件推薦）：
+**或者使用 inline styles（行內樣式）**（小元件推薦）：
 ```jsx
 <div style={{ padding: 16, background: '#111' }}>...</div>
 ```
 
-這條是**非協商**的。每次編寫 `const styles = {...}` 都必須 replace（替換）成 specific（特定）命名，否則多組件載入時全疊報錯。
+這條是**非協商**的。每次編寫 `const styles = {...}` 都必須 replace（替換）成 specific（特定）命名，否則多元件載入時全部出錯。
 
 ### 規矩 2：Scope（作用域）不共享，需手動 export（匯出）
 
-**關鍵認知**：每個 `<script type="text/babel">` 被 Babel 獨立編譯，它們之間 **scope 不通**。`components.jsx` 裡定義的 `Terminal` 組件，在 `pages.jsx` 裡**預設是 undefined**。
+**關鍵認知**：每個 `<script type="text/babel">` 被 Babel 獨立編譯，它們之間 **scope 不通**。`components.jsx` 裡定義的 `Terminal` 元件，在 `pages.jsx` 裡**預設是 undefined**。
 
-**解決方式**：在每個組件檔案末尾，把要共享的組件/工具 export 到 `window`：
+**解決方式**：在每個元件檔案末尾，把要共享的元件/工具 export 到 `window`：
 
 ```jsx
 // components.jsx 末尾
@@ -121,7 +133,7 @@ container.scrollTo({
 
 ## 呼叫 Claude API（HTML 內）
 
-部分原生設計代理人（design-agent）環境（如 Claude.ai Artifacts）有免配置的 `window.claude.complete`，但大部分代理人環境（Claude Code / Codex / Cursor / Trae / 等）在地端**沒有**。
+部分原生設計代理人（design-agent）環境（如 Claude.ai Artifacts）有免設定的 `window.claude.complete`，但大部分代理人環境（Claude Code / Codex / Cursor / Trae / 等）在地端**沒有**。
 
 如果你的 HTML 原型需要呼叫 LLM 做 demo（比如做個聊天介面），兩個選項：
 
@@ -204,7 +216,7 @@ window.claude = {
 <body>
   <div id="root"></div>
 
-  <!-- 你的組件檔案 -->
+  <!-- 你的元件檔案 -->
   <script type="text/babel" src="components.jsx"></script>
 
   <!-- 主入口 -->
@@ -226,7 +238,7 @@ window.claude = {
 </html>
 ```
 
-## 常見報錯及解決
+## 常見錯誤及解決
 
 **`styles is not defined` 或 `Cannot read property 'button' of undefined`**
 → 你在一個檔案裡定義了 `const styles`，另一個檔案覆蓋了。給每個改成 specific 命名。
@@ -252,13 +264,13 @@ window.claude = {
 ├── index.html
 ├── src/
 │   ├── primitives.jsx      # 基礎元素：Button、Card、Badge...
-│   ├── components.jsx      # 業務組件：UserCard、PostList...
+│   ├── components.jsx      # 業務元件：UserCard、PostList...
 │   ├── pages/
 │   │   ├── home.jsx        # 首頁
 │   │   ├── detail.jsx      # 詳情頁
 │   │   └── settings.jsx    # 設定頁
 │   ├── router.jsx          # 簡單路由（React state 切換）
-│   └── app.jsx             # 入口組件
+│   └── app.jsx             # 入口元件
 └── data.js                 # mock data
 ```
 

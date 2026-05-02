@@ -1,38 +1,38 @@
 [
   {
     "id": 1,
-    "prompt": "我想做一个SaaS产品的登录页面，给我3个风格方向对比看看",
-    "expected": "触发clarifying questions问design context/brand；产出3个variation的design_canvas；不用紫渐变/emoji/Inter等AI slop；有具体理由说明每个variation的差异维度",
-    "tests": "workflow问问题 + variations逻辑 + 反AI slop清单 + design_canvas使用"
+    "prompt": "我想做一個SaaS產品的登入頁面，給我3個風格方向對比看看",
+    "expected": "觸發clarifying questions問design context/brand；產出3個variation的design_canvas；不用紫漸層/emoji/Inter等AI slop；有具體理由說明每個variation的差異維度",
+    "tests": "workflow問問題 + variations邏輯 + 反AI slop清單 + design_canvas使用"
   },
   {
     "id": 2,
-    "prompt": "帮我做一份10页的产品pitch deck，讲一个AI工具的创业项目",
-    "expected": "用deck_stage.js起手；先口头vocalize设计系统（色彩/字型/layout节奏）等确认；Section divider/content/data/quote多种layout交替；字号≥24px；1-indexed labels",
-    "tests": "Junior Designer先汇报再做 + deck_stage使用 + 视觉节奏 + scale规范"
+    "prompt": "幫我做一份10頁的產品pitch deck，講一個AI工具的創業項目",
+    "expected": "用deck_stage.js起手；先口頭vocalize設計系統（色彩/字型/layout節奏）等確認；Section divider/content/data/quote多種layout交替；字號≥24px；1-indexed labels",
+    "tests": "Junior Designer先彙報再做 + deck_stage使用 + 視覺節奏 + scale規範"
   },
   {
     "id": 3,
-    "prompt": "做个30秒的HTML动画，讲神经网络怎么工作",
-    "expected": "用animations.jsx的Stage+Sprite；先写时间轴再写组件；入场easeOut出场easeIn；分phase讲故事而不是堆动画；文字停留≥3秒",
-    "tests": "animations工作流 + easing正确 + 节奏设计 + 时长控制"
+    "prompt": "做個30秒的HTML動畫，講神經網路怎麼運作",
+    "expected": "用animations.jsx的Stage+Sprite；先寫時間軸再寫元件；入場easeOut出場easeIn；分phase講故事而不是堆動畫；文字停留≥3秒",
+    "tests": "animations工作流 + easing正確 + 節奏設計 + 時長控制"
   },
   {
     "id": 4,
-    "prompt": "做一个 Habit Tracker App 原型",
-    "expected": "问用户要 overview 平铺 or flow demo（默认走 overview）；用 assets/ios_frame.jsx，不手写 Dynamic Island；Tracker 属高密度型，每屏 ≥ 3 处信息密度元素（习惯完成率、连续天数、趋势曲线、成就badge等，非装饰）；至少 5-7 屏并排（首页/新建习惯/详情/统计/设置）",
-    "tests": "overview/flow 形态路由 + ios_frame 硬绑定 + 信息密度分型（高密度型）+ 多屏并排"
+    "prompt": "做一個 Habit Tracker App 原型",
+    "expected": "問使用者要 overview 平鋪 or flow demo（預設走 overview）；用 assets/ios_frame.jsx，不手寫 Dynamic Island；Tracker 屬高密度型，每屏 ≥ 3 處資訊密度元素（習慣完成率、連續天數、趨勢曲線、成就badge等，非裝飾）；至少 5-7 屏並排（首頁/新建習慣/詳情/統計/設定）",
+    "tests": "overview/flow 形態路由 + ios_frame 硬綁定 + 資訊密度分型（高密度型）+ 多屏並排"
   },
   {
     "id": 5,
-    "prompt": "做一个读书笔记 App 原型",
-    "expected": "overview 平铺为主；ios_frame.jsx；读书笔记偏内容展示类，信息密度要求不如 Tracker 极端，但笔记列表页仍需 ≥ 3 层信息（书籍、引文、标签、进度）；至少 4-6 屏（首页书架/笔记详情/标注高亮/搜索/笔记本管理）；字体优先 serif display",
-    "tests": "overview 默认 + ios_frame + 信息层次 + 内容为主的视觉节奏"
+    "prompt": "做一個讀書筆記 App 原型",
+    "expected": "overview 平鋪為主；ios_frame.jsx；讀書筆記偏內容展示類，資訊密度要求不如 Tracker 極端，但筆記列表頁仍需 ≥ 3 層資訊（書籍、引文、標籤、進度）；至少 4-6 屏（首頁書架/筆記詳情/標注高亮/搜尋/筆記本管理）；字型優先 serif display",
+    "tests": "overview 預設 + ios_frame + 資訊層次 + 內容為主的視覺節奏"
   },
   {
     "id": 6,
-    "prompt": "做一个跑步记录 App 原型",
-    "expected": "overview 平铺；ios_frame.jsx；跑步 App 属高密度型（地图、配速曲线、心率区间、每公里分段数据），每屏 ≥ 3 处产品差异化信息；至少 5 屏（今日总览/跑步中实时数据/路线地图/历史记录/月度统计）；避免撞 AI slop（不用紫渐变、不堆装饰 icon，但数据可视化 icon 允许保留）",
-    "tests": "overview + ios_frame + 高密度型数据可视化 + 地图/图表混排 + slop 边界条件"
+    "prompt": "做一個跑步記錄 App 原型",
+    "expected": "overview 平鋪；ios_frame.jsx；跑步 App 屬高密度型（地圖、配速曲線、心率區間、每公里分段資料），每屏 ≥ 3 處產品差異化資訊；至少 5 屏（今日總覽/跑步中即時資料/路線地圖/歷史記錄/月度統計）；避免撞 AI slop（不用紫漸層、不堆裝飾 icon，但資料視覺化 icon 允許保留）",
+    "tests": "overview + ios_frame + 高密度型資料視覺化 + 地圖/圖表混排 + slop 邊界條件"
   }
 ]

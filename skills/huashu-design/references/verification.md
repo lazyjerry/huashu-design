@@ -18,7 +18,7 @@ open -a "Google Chrome" "/path/to/your/design.html"
 
 ### 2. 主控台錯誤檢查
 
-HTML 檔案中最常見的問題是 JS 報錯導致白屏。使用 Playwright 執行檢查：
+HTML 檔案中最常見的問題是 JS 出錯導致白屏。使用 Playwright 執行檢查：
 
 ```bash
 python scripts/verify.py path/to/design.html
@@ -137,7 +137,7 @@ python ~/Documents/寫作/tools/upload_image.py screenshot.png
 1. React + Babel script tag 的 integrity hash 是否正確（參考 `react-setup.md`）。
 2. 是否為 `const styles = {...}` 命名衝突。
 3. 跨檔案的元件是否有匯出（export）到 `window`。
-4. JSX 語法錯誤（babel.min.js 可能不報錯，建議更換為 babel.js 非壓縮版本）。
+4. JSX 語法錯誤（babel.min.js 可能不出錯，建議更換為 babel.js 非壓縮版本）。
 
 ### 動畫卡頓
 
